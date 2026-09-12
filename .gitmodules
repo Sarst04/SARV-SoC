@@ -1,3 +1,15 @@
 [submodule "ip/SARV"]
 	path = ip/SARV
 	url = https://github.com/Sarst04/SARV.git
+[submodule "ip/ACLINT"]
+	path = ip/ACLINT
+	url = https://github.com/Sarst04/ACLINT.git
+[submodule "ip/PLIC"]
+	path = ip/PLIC
+	url = https://github.com/Sarst04/PLIC.git
+[submodule "ip/UART"]
+	path = ip/UART
+	url = https://github.com/Sarst04/UART.git
+[submodule "ip/Cache"]
+	path = ip/Cache
+	url = git@github.com:Sarst04/SARV-Cache.git
