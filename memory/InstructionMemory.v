@@ -9,7 +9,8 @@ module instructionMemoryModel #(
 	parameter MEM_SIZE  = 1024,
 	parameter DELAY_A	= 0,
     parameter WORD_PER_LINES_PORT_A = 1,
-	parameter DELAY_B  	= 0
+	parameter DELAY_B  	= 0,
+    parameter INIT_FILE = "instructions.txt" 
 ) (
     input  wire 	   clk,
     input  wire 	   rst,
@@ -177,7 +178,7 @@ module instructionMemoryModel #(
 	initial begin
 		for (i = 0; i < MEM_SIZE; i = i + 1)
 			memory[i] = 8'b0;
-		$readmemb("instructions.txt", memory);
+    	$readmemb(INIT_FILE, memory);
 	end
 
 	integer w;
