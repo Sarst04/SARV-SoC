@@ -7,7 +7,7 @@
 // Revisions:
 //   2026-09-13 - Initial release (Sayyid Amirreza Sayyid Torabi)
 ////////////////////////////////////////////////////////////////////////////////
-import SARV_SoC_config_pkg::*;
+import SARV_SoC_pkgConfig::*;
 module SARV_SoC#(
 	parameter int	GPIO_IN_NUM = 8,
 	parameter int	GPIO_OUT_NUM = 8

@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
-// File       : SARV_pkgConfig.sv
+// File       : SARV_SoC_pkgConfig.sv
 // Author(s)  : Sayyid Amirreza Sayyid Torabi <sayyidtorabi@gmail.com>
 // Created    : 2026-09-13
 // Description:
@@ -7,7 +7,7 @@
 // Revisions:
 //   2026-09-13 - Initial release (Sayyid Amirreza Sayyid Torabi)
 ////////////////////////////////////////////////////////////////////////////////
-package SARV_SoC_config_pkg;
+package SARV_SoC_pkgConfig;
 
 	// Memory Map
     localparam INSTRUCTION_MEMORY_BASE_ADDR 	= 32'h0000_0000;
