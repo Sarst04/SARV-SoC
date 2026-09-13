@@ -1,46 +1,25 @@
-PROJECT := SARV-SoC
+OUT_DIR := out/rtl
 
-OUT_DIR := out
-RTL_OUT := $(OUT_DIR)/rtl
-
-IP_DIRS := \
-	ip/SARV/rtl/core \
-	ip/Cache/rtl \
-	ip/ACLINT/rtl \
-	ip/PLIC/rtl \
-	ip/UART/rtl \
-	ip/GPIO/rtl
-
-.PHONY: rtl
+.PHONY: rtl clean
 
 rtl:
-	@echo "Extracting $(PROJECT) RTL..."
+	@rm -rf $(OUT_DIR)
+	@mkdir -p $(OUT_DIR)
 
-	@rm -rf $(RTL_OUT)
-	@mkdir -p $(RTL_OUT)
+	@cp -r rtl/* $(OUT_DIR)/
+	@cp -r memory $(OUT_DIR)/
 
-	@echo "Copying SoC RTL..."
-	@find rtl -maxdepth 1 -type f \
-		\( -name "*.v" -o -name "*.sv" \) \
-		-exec cp {} $(RTL_OUT)/ \;
+	@mkdir -p $(OUT_DIR)/ip
 
-	@echo "Copying memory RTL..."
-	@mkdir -p $(RTL_OUT)/memory
-	@find memory -type f \
-		\( -name "*.v" -o -name "*.sv" \) \
-		-exec cp {} $(RTL_OUT)/memory/ \;
+	@cp -r ip/ACLINT/rtl 	$(OUT_DIR)/ip/ACLINT/
+	@cp -r ip/Cache/rtl  	$(OUT_DIR)/ip/Cache/
+	@cp -r ip/GPIO/rtl   	$(OUT_DIR)/ip/GPIO/
+	@cp -r ip/PLIC/rtl   	$(OUT_DIR)/ip/PLIC/
+	@cp -r ip/SARV/rtl/core	$(OUT_DIR)/ip/SARV/
+	@cp -r ip/UART/rtl   	$(OUT_DIR)/ip/UART/
 
-	@echo "Copying IP RTL..."
-	@for dir in $(IP_DIRS); do \
-		name=$$(echo $$dir | cut -d/ -f2); \
-		dest="$(RTL_OUT)/ip/$$name"; \
-		mkdir -p "$$dest"; \
-		find "$$dir" -type f \
-			\( -name "*.v" -o -name "*.sv" \) \
-			-exec cp --parents {} "$$dest" \; ; \
-	done
+	@echo "Extraction completed."
 
-	@echo ""
-	@echo "RTL extraction complete."
-	@echo "Output: $(RTL_OUT)"
-	@echo "Files: $$(find $(RTL_OUT) -type f \( -name "*.v" -o -name "*.sv" \) | wc -l)"
+clean:
+	@rm -rf out
+	@echo "Clean complete."
